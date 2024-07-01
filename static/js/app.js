@@ -45,7 +45,7 @@ function buildCharts(sample) {
       marker: {
         size: sample_values,
         color: otu_ids,
-        colorscale: 'Portland'
+        colorscale: 'Earth'
       }
     }];
 
@@ -61,7 +61,7 @@ function buildCharts(sample) {
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
-   // Build a Bar Chart
+    // Build a Bar Chart
     var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     var barData = [{
       y: yticks,
@@ -86,6 +86,10 @@ function buildCharts(sample) {
       title: "Top 10 Bacteria Cultures Found",
       margin: { t: 30, l: 150 }
     };
+
+    Plotly.newPlot("bar", barData, barLayout);
+  });
+}
 
 // Function to run on page load
 function init() {
