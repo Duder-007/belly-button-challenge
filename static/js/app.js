@@ -61,24 +61,31 @@ function buildCharts(sample) {
 
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
-    // Build a Bar Chart
+   // Build a Bar Chart
     var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     var barData = [{
       y: yticks,
       x: sample_values.slice(0, 10).reverse(),
       text: otu_labels.slice(0, 10).reverse(),
       type: "bar",
-      orientation: "h"
+      orientation: "h",
+      marker: {
+        color: 'purple'
+      }
     }];
 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found",
-      margin: { t: 30, l: 150 }
+      margin: { t: 30, l: 150 },
+      paper_bgcolor: 'black',  // Background color of the plot area
+      plot_bgcolor: 'black'    // Background color of the entire plot
     };
 
     Plotly.newPlot("bar", barData, barLayout);
-  });
-}
+    var barLayout = {
+      title: "Top 10 Bacteria Cultures Found",
+      margin: { t: 30, l: 150 }
+    };
 
 // Function to run on page load
 function init() {
